@@ -9,9 +9,12 @@ names = ['Cecilia', 'Lise', 'Marie']
 letters = [len(n) for n in names]
 
 for name, count in zip(names, letters):
+    print(name)
+    print(count)
     if count > max_letters:
         longest_name = name
         max_letters = count
+
 
 # 입력 이터레이터들의 길이는 같아야한다.
 # 감싼 이터레이터가 끝날 때 까지 튜플을 넘겨준다. 길이가 다르다면 zip 은 결과를 잘라낸다.

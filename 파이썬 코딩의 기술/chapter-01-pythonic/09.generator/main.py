@@ -10,7 +10,7 @@ squares = (x ** 2 for x in a if x % 2 == 0)
 print(squares)
 # <generator object <genexpr> at 0x1047b1840>
 
-# 제너레이터 표현식은   제너레이터 표현시고가 함께 하용할 수 있다.
+# 제너레이터 표현식은   제너레이터 표현식과 함께 하용할 수 있다.
 result = ((x, x ** 0.5) for x in squares)
 print(next(result))  # 이 이터레이터를 전진 시킬 때마다 루프의 도미노 효과로 내부 이터레이터도 전진 시키고 조건 표현식을 계산해서 입려과 출력을 처리한다.
 print(next(result))
