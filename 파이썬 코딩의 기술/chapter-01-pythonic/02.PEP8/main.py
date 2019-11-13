@@ -24,7 +24,7 @@
 # 4. __double_leading_underscore: 클래스 속성으로 사용되면 그 이름을 변경합니다
 #    (ex. FooBar 에 정의된 __boo 는 _FooBar__boo 로 바뀝니다.) => *맹글링
 # 5. __double_leading_and_trailing_underscore__: 마술(magic)을 부리는 용도로 사용되거나 사용자가 조정할 수 있는 네임스페이스 안의 속성을 뜻합니다.
-#    이런 이름을 새로 만들지 마시고 오직 문서대로만 사용하세요.
+# #    이런 이름을 새로 만들지 마시고 오직 문서대로만 사용하세요.
 #    (ex. __init__)
 # 6. protected 인스턴스 속성은 _leading_underscore 형식
 # 7. private 인스턴스 속성은 __double_leading_underscore 형식
