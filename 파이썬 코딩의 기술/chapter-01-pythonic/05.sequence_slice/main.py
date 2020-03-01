@@ -27,3 +27,10 @@ a = [1, 2]
 b = a[:]
 print(b == a)  # True # value check
 print(a is b)  # False # reference check
+
+a = [{"a": "a"}, {"b": "b"}]
+b = a[:]
+print(b == a)  # True # value check
+print(a is b)  # False # reference check
+a[0]["a"] = "b"
+print(b == a)  # True # value check
