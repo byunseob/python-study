@@ -7,3 +7,9 @@
 
 # 기존의 호출 코드와 호환성을 유지하면서도 함수의 파라미터를 확장할 수 있는 강력한 수단이 된다.
 
+
+def force_keyword_arg(*, key, value):
+    print(f"key:{key} value:{value}")
+
+
+force_keyword_arg(key="key", value="value")
