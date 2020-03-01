@@ -20,7 +20,7 @@ class ToDictMixin(object):
     def to_dict(self):
         return self._traverse_dict(self.__dict__)
 
-    # 세부 구현은 직관적이며 hasattr 을 사용한 동적 속성 접근, ininstance 를 사용한 동적 타입 검사,
+    # 세부 구현은 직관적이며 hasattr 을 사용한 동적 속성 접근, isinstance 를 사용한 동적 타입 검사,
     # 인스턴스 딕셔너리 __dict__ 를 이용한다.
 
     def _traverse_dict(self, instance_dict):
@@ -98,8 +98,7 @@ print(my_tree.to_dict())
 
 # 믹스인을 조합할 수도 있다.
 # 예를 들어 어떤 클래스에도 동작하는 범용 JSON 직렬화를 제공하는 믹스인이 필요하다고 해보자.
-# 이 믹스인은 클래스에 to_dict 메서드(ToDictMixin 클래스에서 제공할 수도 있고 그렇지 않을 수도 있다) 기
-# 있다고 가정하고 만들면 된다.
+# 이 믹스인은 클래스에 to_dict 메서드 있다고 가정하고 만들면 된다.
 
 class JsonMixin(object):
     @classmethod
@@ -116,9 +115,9 @@ class JsonMixin(object):
 # 이 예제에서 JsonMixin 의 요구사항은 클래스에 to_dict 메서드가 있고 해당 클래스의 __init__ 메소드에서
 # 키워드 인수를 받는 다는 것뿐이다.
 
-# 이 믹스인을 이용하면 짧은 반복 코드로 JSON 으로 직렬화 하고 JSON 에서 역질렬화하는 유틸리티 클래스의
+# 이 믹스인을 이용하면 짧은 반복 코드로 JSON 으로 직렬화 하고 JSON 에서 역직렬화하는 유틸리티 클래스의
 # 계층 구조를 간단하게 생성할 수 있다.
-# 예를 들어 당므은 데이터센터 토폴로지를 구성하는 부분들을 표현하는 데이터 클래스의 계층이다.
+# 예를 들어 다음은 데이터센터 토폴로지를 구성하는 부분들을 표현하는 데이터 클래스의 계층이다.
 
 class DataCenterRack(ToDictMixin, JsonMixin):
     def __init__(self, switch=None, machines=None):

@@ -10,7 +10,7 @@ class MyObject(object):
         return self.__private_filed
 
 
-# 공개 속성은 어디서든 객체에 점 연사자를 사용하여 접근할 수있다.
+# 공개 속성은 어디서든 객체에 점 연산자를 사용하여 접근할 수있다.
 
 foo = MyObject()
 assert foo.public_field == 5
