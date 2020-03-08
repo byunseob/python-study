@@ -88,6 +88,34 @@ print('Should be (5 * 5) + 2 = 27 but is', foo.value)
 # 파이썬 2.2 에서는 이 문제를 해결하려고 super 라는 내장 함수를 추가하고 메소드 해석순서 (MRO)를 정의했다.
 # MRO는 어떤 슈퍼클래스부터 초기화하는지를 정한다.
 
+
+class TimesFive(MyBaseClass):
+    def __init__(self, value):
+        super().__init__(value)
+        self.value *= 5
+
+
+class PlusTwo(MyBaseClass):
+    def __init__(self, value):
+        super().__init__(value)
+        self.value += 2
+
+
+class ThisWay(TimesFive, PlusTwo):
+    def __init__(self, value):
+        super().__init__(value)
+
+
+print(ThisWay.mro())
+# [<class '__main__.ThisWay'>,
+# <class '__main__.TimesFive'>,
+# <class '__main__.PlusTwo'>,
+# <class '__main__.MyBaseClass'>,
+# <class 'object'>] 이런 호출이 꼭대기에 도달하면 모든 초기화 메서드는 실제 __init__ 함수가 호출된 순서의 역순으로 실행된다
+foo = ThisWay(5)
+print('Should be 5 * (5 + 2) = 35 and is', foo.value)
+
+
 # 파이썬 3 에서는 super 를 인수없이 호출하면 __class__와  self 를 인수로 넘겨서 호출한 것으로 처리한다.
 
 class Explicit(MyBaseClass):
@@ -103,4 +131,3 @@ class Implicit(MyBaseClass):
 assert Explicit(10).value == Implicit(10).value
 
 # 파이썬3 에서는 __class__ 변수를 사용한 메소드에서 현재 클래스를 올바르게 참조하도록 해주므로 위의 코드가 잘동작한다.
-
